@@ -1,0 +1,647 @@
+{
+  "schema_version": 1,
+  "tool_version": "1.0.0",
+  "name": "终态晚于契约期限",
+  "input_status": "VALID",
+  "input_errors": [],
+  "limitations": [
+    "Offline exported declarations only; runtime identity and enforcement are not authenticated.",
+    "SROS2 source-policy subset, not signed DDS permissions/governance evaluation.",
+    "Service-role coverage is not proof of message delivery, cancel acceptance, or physical stopping.",
+    "One resolved deployment snapshot per version in bundle mode; finite-world mode is separate.",
+    "Trace scope is a declared match to the after snapshot; origin, clock and coverage are not authenticated."
+  ],
+  "domains": {
+    "CONFIGURATION": {
+      "before": {
+        "verdict": "PASS",
+        "checks": [
+          {
+            "rule": "before.declared_dds_rmw",
+            "verdict": "PASS",
+            "observed": "rmw_fastrtps_cpp",
+            "reason": "dds_source_policy_scope"
+          },
+          {
+            "rule": "before.security.enable",
+            "verdict": "PASS",
+            "observed": "true",
+            "expected": "true"
+          },
+          {
+            "rule": "before.security.strategy",
+            "verdict": "PASS",
+            "observed": "Enforce",
+            "expected": "Enforce"
+          },
+          {
+            "rule": "before.enclave.client",
+            "verdict": "PASS",
+            "enclave": "/operator",
+            "reason": "declared_policy_enclave"
+          },
+          {
+            "rule": "before.enclave.server",
+            "verdict": "PASS",
+            "enclave": "/robot",
+            "reason": "declared_policy_enclave"
+          }
+        ],
+        "scope": "exported configuration declarations"
+      },
+      "after": {
+        "verdict": "PASS",
+        "checks": [
+          {
+            "rule": "after.declared_dds_rmw",
+            "verdict": "PASS",
+            "observed": "rmw_fastrtps_cpp",
+            "reason": "dds_source_policy_scope"
+          },
+          {
+            "rule": "after.security.enable",
+            "verdict": "PASS",
+            "observed": "true",
+            "expected": "true"
+          },
+          {
+            "rule": "after.security.strategy",
+            "verdict": "PASS",
+            "observed": "Enforce",
+            "expected": "Enforce"
+          },
+          {
+            "rule": "after.enclave.client",
+            "verdict": "PASS",
+            "enclave": "/operator",
+            "reason": "declared_policy_enclave"
+          },
+          {
+            "rule": "after.enclave.server",
+            "verdict": "PASS",
+            "enclave": "/robot",
+            "reason": "declared_policy_enclave"
+          }
+        ],
+        "scope": "exported configuration declarations"
+      },
+      "migration": {
+        "verdict": "PASS",
+        "reason": "stable_declared_bindings",
+        "binding_changes": [],
+        "platform_changes": [],
+        "context_unchanged": true
+      },
+      "verdict": "PASS"
+    },
+    "AUTHORIZATION": {
+      "before": {
+        "verdict": "PASS",
+        "checks": [
+          {
+            "node": "client",
+            "resource": "/admin/command",
+            "operation": "publish",
+            "enclave": "/operator",
+            "policy_decision": {
+              "value": false,
+              "reasons": [
+                "DEFAULT_DENY: no exact grant in this complete supported enclave"
+              ],
+              "sources": [
+                "before.policy.xml#L3"
+              ]
+            },
+            "verdict": "PASS"
+          }
+        ],
+        "reason": "explicit_forbidden_queries"
+      },
+      "after": {
+        "verdict": "PASS",
+        "checks": [
+          {
+            "node": "client",
+            "resource": "/admin/command",
+            "operation": "publish",
+            "enclave": "/operator",
+            "policy_decision": {
+              "value": false,
+              "reasons": [
+                "DEFAULT_DENY: no exact grant in this complete supported enclave"
+              ],
+              "sources": [
+                "after.policy.xml#L3"
+              ]
+            },
+            "verdict": "PASS"
+          }
+        ],
+        "reason": "explicit_forbidden_queries"
+      },
+      "verdict": "PASS"
+    },
+    "PROTOCOL_COVERAGE": {
+      "schema_version": 1,
+      "name": "终态晚于契约期限",
+      "input_status": "VALID",
+      "input_errors": [],
+      "limitations": [
+        "Synthetic normalized authorization atoms and finite protocol graphs only.",
+        "No ROS connection, launch execution, DDS/XML parsing, network scanning, or policy deployment.",
+        "Shared-binding digests are declared assumptions, not verified artifact hashes.",
+        "Paths establish authorized communication prerequisites, not delivery, liveness, deadlines, or physical safety.",
+        "A path may differ per world; this is not proof of one executable strategy for all worlds.",
+        "Trace obligations and real runtime enforcement are not implemented."
+      ],
+      "model_sha256": "927cc2aea95f07fc423e5c6b701e6e5b9343b1de5e9236f844720dccae7a4749",
+      "evidence_scope": "declared synthetic finite model; no external artifact verification",
+      "persistent_obligation_ids": [
+        "navigate-1"
+      ],
+      "shared_bindings": {
+        "applied": [],
+        "ignored": []
+      },
+      "world_evaluations": {
+        "before": [
+          {
+            "world_id": "before",
+            "assignment": {},
+            "admit_new_goal_metadata": null,
+            "value": true,
+            "obligations": [
+              {
+                "obligation_id": "navigate-1",
+                "value": true,
+                "authorized_path": [
+                  "navigate-1:cancel",
+                  "navigate-1:result"
+                ],
+                "possible_path": [
+                  "navigate-1:cancel",
+                  "navigate-1:result"
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "navigate-1:cancel",
+                "value": true,
+                "reasons": []
+              },
+              {
+                "edge_id": "navigate-1:result",
+                "value": true,
+                "reasons": []
+              }
+            ]
+          }
+        ],
+        "after": [
+          {
+            "world_id": "after",
+            "assignment": {},
+            "admit_new_goal_metadata": null,
+            "value": true,
+            "obligations": [
+              {
+                "obligation_id": "navigate-1",
+                "value": true,
+                "authorized_path": [
+                  "navigate-1:cancel",
+                  "navigate-1:result"
+                ],
+                "possible_path": [
+                  "navigate-1:cancel",
+                  "navigate-1:result"
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "navigate-1:cancel",
+                "value": true,
+                "reasons": []
+              },
+              {
+                "edge_id": "navigate-1:result",
+                "value": true,
+                "reasons": []
+              }
+            ]
+          }
+        ]
+      },
+      "unmatched_worlds": {
+        "before": [],
+        "after": []
+      },
+      "correlated": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before",
+            "after_world": "after",
+            "before_value": true,
+            "after_value": true,
+            "obligations": [
+              {
+                "obligation_id": "navigate-1",
+                "before_value": true,
+                "after_value": true,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          }
+        ]
+      },
+      "independent_baseline": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before",
+            "after_world": "after",
+            "before_value": true,
+            "after_value": true,
+            "obligations": [
+              {
+                "obligation_id": "navigate-1",
+                "before_value": true,
+                "after_value": true,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          }
+        ]
+      }
+    },
+    "TRACE_OBLIGATION": {
+      "domain": "TRACE_OBLIGATION",
+      "input_status": "VALID",
+      "verdict": "FAIL",
+      "reason": "terminal_after_deadline",
+      "input_errors": [],
+      "limitations": [
+        "Only supplied offline events and declared coverage are evaluated.",
+        "goal_id must identify one task instance within one monotonic clock domain.",
+        "One trace must belong to one session; cross-session merging and goal_id reuse are unsupported.",
+        "A terminal status proves an observed terminal event, not physical stopping or successful cancellation.",
+        "The adapter cannot authenticate events or independently verify complete=true."
+      ],
+      "obligations": [
+        {
+          "id": "navigate-1",
+          "goal_id": "goal-001",
+          "verdict": "FAIL",
+          "reason": "terminal_after_deadline",
+          "admission_basis": "observed_accepted",
+          "event_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "cancel_request_indices": [
+            1
+          ],
+          "terminal_indices": [
+            3
+          ],
+          "cancel_acknowledged": true,
+          "coverage_complete": true,
+          "observed_terminal_status": "CANCELED",
+          "cancel_requested_at_ms": 200,
+          "deadline_ms": 1200,
+          "repeated_cancel_requests": 0,
+          "terminal_at_ms": 1300,
+          "elapsed_ms": 1100,
+          "observed_within_deadline": false
+        }
+      ],
+      "clock": "monotonic_ms",
+      "window": {
+        "start_ms": 0,
+        "end_ms": 2000
+      },
+      "coverage_complete": true,
+      "events_seen": 4,
+      "unrelated_goal_ids": [],
+      "expected_scope": {
+        "context_id": "sim-deployment-01",
+        "deployment_sha256": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+        "policy_sha256": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045"
+      },
+      "declared_scope": {
+        "context_id": "sim-deployment-01",
+        "deployment_sha256": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+        "policy_sha256": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045"
+      }
+    }
+  },
+  "evidence": [
+    {
+      "path": "bundle.json",
+      "bytes": 303,
+      "sha256": "4e757d72953ef649ba9e8da28fd8110e0f74e000469202369d3497a3b8802ec9"
+    },
+    {
+      "path": "contract.json",
+      "bytes": 406,
+      "sha256": "03dcff0d1e46db974e8ab1ac668df661b85560e760b50817cb226497222d7dfd"
+    },
+    {
+      "path": "before.json",
+      "bytes": 417,
+      "sha256": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94"
+    },
+    {
+      "path": "before.policy.xml",
+      "bytes": 435,
+      "sha256": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045"
+    },
+    {
+      "path": "after.json",
+      "bytes": 417,
+      "sha256": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94"
+    },
+    {
+      "path": "after.policy.xml",
+      "bytes": 435,
+      "sha256": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045"
+    },
+    {
+      "path": "trace.json",
+      "bytes": 785,
+      "sha256": "cf400539e1a8accd521d13a086c887e0c7c7771975e3e4ac08814f7af6126c3f"
+    }
+  ],
+  "decision": "BLOCK",
+  "compiled_model": {
+    "schema_version": 1,
+    "name": "终态晚于契约期限",
+    "obligations": [
+      {
+        "id": "navigate-1",
+        "goal_id": "goal-001",
+        "admitted_before": true,
+        "start": "navigate-1:ACTIVE",
+        "targets": [
+          "navigate-1:COVERED"
+        ]
+      }
+    ],
+    "shared_bindings": [],
+    "before": {
+      "edges": [
+        {
+          "id": "navigate-1:cancel",
+          "from": "navigate-1:ACTIVE",
+          "to": "navigate-1:CANCEL_RPC",
+          "requires": [
+            "navigate-1:cancel:request:client",
+            "navigate-1:cancel:reply:server"
+          ],
+          "when": {}
+        },
+        {
+          "id": "navigate-1:result",
+          "from": "navigate-1:CANCEL_RPC",
+          "to": "navigate-1:COVERED",
+          "requires": [
+            "navigate-1:result:request:client",
+            "navigate-1:result:reply:server"
+          ],
+          "when": {}
+        }
+      ],
+      "worlds": [
+        {
+          "id": "before",
+          "assignment": {},
+          "complete": true,
+          "allowed": [
+            "navigate-1:cancel:request:client",
+            "navigate-1:cancel:reply:server",
+            "navigate-1:result:request:client",
+            "navigate-1:result:reply:server"
+          ],
+          "capability_domain": [
+            "navigate-1:cancel:request:client",
+            "navigate-1:cancel:reply:server",
+            "navigate-1:result:request:client",
+            "navigate-1:result:reply:server"
+          ]
+        }
+      ]
+    },
+    "after": {
+      "edges": [
+        {
+          "id": "navigate-1:cancel",
+          "from": "navigate-1:ACTIVE",
+          "to": "navigate-1:CANCEL_RPC",
+          "requires": [
+            "navigate-1:cancel:request:client",
+            "navigate-1:cancel:reply:server"
+          ],
+          "when": {}
+        },
+        {
+          "id": "navigate-1:result",
+          "from": "navigate-1:CANCEL_RPC",
+          "to": "navigate-1:COVERED",
+          "requires": [
+            "navigate-1:result:request:client",
+            "navigate-1:result:reply:server"
+          ],
+          "when": {}
+        }
+      ],
+      "worlds": [
+        {
+          "id": "after",
+          "assignment": {},
+          "complete": true,
+          "allowed": [
+            "navigate-1:cancel:request:client",
+            "navigate-1:cancel:reply:server",
+            "navigate-1:result:request:client",
+            "navigate-1:result:reply:server"
+          ],
+          "capability_domain": [
+            "navigate-1:cancel:request:client",
+            "navigate-1:cancel:reply:server",
+            "navigate-1:result:request:client",
+            "navigate-1:result:reply:server"
+          ]
+        }
+      ]
+    }
+  },
+  "capability_evidence": {
+    "before": [
+      {
+        "atom": "navigate-1:cancel:request:client",
+        "node": "client",
+        "enclave": "/operator",
+        "resource": "/navigate/_action/cancel_goal",
+        "operation": "request",
+        "value": true,
+        "reasons": [
+          "EXPLICIT_ALLOW: exact source-policy permission; runtime DDS enforcement is not checked",
+          "actions.call -> services.request"
+        ],
+        "sources": [
+          "before.policy.xml#L3"
+        ]
+      },
+      {
+        "atom": "navigate-1:cancel:reply:server",
+        "node": "server",
+        "enclave": "/robot",
+        "resource": "/navigate/_action/cancel_goal",
+        "operation": "reply",
+        "value": true,
+        "reasons": [
+          "EXPLICIT_ALLOW: exact source-policy permission; runtime DDS enforcement is not checked",
+          "actions.execute -> services.reply"
+        ],
+        "sources": [
+          "before.policy.xml#L4"
+        ]
+      },
+      {
+        "atom": "navigate-1:result:request:client",
+        "node": "client",
+        "enclave": "/operator",
+        "resource": "/navigate/_action/get_result",
+        "operation": "request",
+        "value": true,
+        "reasons": [
+          "EXPLICIT_ALLOW: exact source-policy permission; runtime DDS enforcement is not checked",
+          "actions.call -> services.request"
+        ],
+        "sources": [
+          "before.policy.xml#L3"
+        ]
+      },
+      {
+        "atom": "navigate-1:result:reply:server",
+        "node": "server",
+        "enclave": "/robot",
+        "resource": "/navigate/_action/get_result",
+        "operation": "reply",
+        "value": true,
+        "reasons": [
+          "EXPLICIT_ALLOW: exact source-policy permission; runtime DDS enforcement is not checked",
+          "actions.execute -> services.reply"
+        ],
+        "sources": [
+          "before.policy.xml#L4"
+        ]
+      }
+    ],
+    "after": [
+      {
+        "atom": "navigate-1:cancel:request:client",
+        "node": "client",
+        "enclave": "/operator",
+        "resource": "/navigate/_action/cancel_goal",
+        "operation": "request",
+        "value": true,
+        "reasons": [
+          "EXPLICIT_ALLOW: exact source-policy permission; runtime DDS enforcement is not checked",
+          "actions.call -> services.request"
+        ],
+        "sources": [
+          "after.policy.xml#L3"
+        ]
+      },
+      {
+        "atom": "navigate-1:cancel:reply:server",
+        "node": "server",
+        "enclave": "/robot",
+        "resource": "/navigate/_action/cancel_goal",
+        "operation": "reply",
+        "value": true,
+        "reasons": [
+          "EXPLICIT_ALLOW: exact source-policy permission; runtime DDS enforcement is not checked",
+          "actions.execute -> services.reply"
+        ],
+        "sources": [
+          "after.policy.xml#L4"
+        ]
+      },
+      {
+        "atom": "navigate-1:result:request:client",
+        "node": "client",
+        "enclave": "/operator",
+        "resource": "/navigate/_action/get_result",
+        "operation": "request",
+        "value": true,
+        "reasons": [
+          "EXPLICIT_ALLOW: exact source-policy permission; runtime DDS enforcement is not checked",
+          "actions.call -> services.request"
+        ],
+        "sources": [
+          "after.policy.xml#L3"
+        ]
+      },
+      {
+        "atom": "navigate-1:result:reply:server",
+        "node": "server",
+        "enclave": "/robot",
+        "resource": "/navigate/_action/get_result",
+        "operation": "reply",
+        "value": true,
+        "reasons": [
+          "EXPLICIT_ALLOW: exact source-policy permission; runtime DDS enforcement is not checked",
+          "actions.execute -> services.reply"
+        ],
+        "sources": [
+          "after.policy.xml#L4"
+        ]
+      }
+    ]
+  },
+  "policy_issues": {
+    "before": [],
+    "after": []
+  },
+  "evidence_sha256": "15e4507869a4f1d03b5c777fa4df2423139745356b1227ca28b37c34bb651678"
+}

@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "name": "03_existing_task_survives_admission_denial",
+  "scope": "Synthetic finite model; DONE means communication prerequisites only.",
+  "before": {
+    "worlds": [
+      {
+        "id": "before",
+        "assignment": {},
+        "capability_domain": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "allowed": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "complete": true,
+        "admit_new_goal": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "cancel",
+        "from": "ACTIVE",
+        "to": "CANCEL_ACK",
+        "requires": [
+          "cancel_req",
+          "cancel_reply"
+        ],
+        "when": {}
+      },
+      {
+        "id": "fallback",
+        "from": "CANCEL_ACK",
+        "to": "DONE",
+        "requires": [
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "when": {}
+      }
+    ]
+  },
+  "after": {
+    "worlds": [
+      {
+        "id": "after",
+        "assignment": {},
+        "capability_domain": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "allowed": [
+          "cancel_req",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "complete": true,
+        "admit_new_goal": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "cancel",
+        "from": "ACTIVE",
+        "to": "CANCEL_ACK",
+        "requires": [
+          "cancel_req",
+          "cancel_reply"
+        ],
+        "when": {}
+      },
+      {
+        "id": "fallback",
+        "from": "CANCEL_ACK",
+        "to": "DONE",
+        "requires": [
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "when": {}
+      }
+    ]
+  },
+  "obligations": [
+    {
+      "id": "existing-goal-1",
+      "start": "ACTIVE",
+      "targets": [
+        "DONE"
+      ],
+      "admitted_before": true
+    }
+  ],
+  "shared_bindings": [],
+  "expected_verdicts": {
+    "correlated": [
+      "PASS",
+      "FAIL",
+      "FAIL"
+    ],
+    "independent_baseline": [
+      "PASS",
+      "FAIL",
+      "FAIL"
+    ]
+  }
+}

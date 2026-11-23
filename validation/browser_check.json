@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "browser": "157.0.4341.60",
+  "scenarios": [
+    "02_cancel_removed",
+    "06_unsupported_policy"
+  ],
+  "checks": [
+    "12 index links",
+    "BLOCK and REVIEW rendering",
+    "before/after task path witnesses",
+    "version switching and evidence filtering",
+    "downloaded JSON",
+    "390px viewport without page overflow",
+    "no script errors or HTTP requests"
+  ]
+}

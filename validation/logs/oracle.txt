@@ -1,0 +1,1 @@
+{"result": "PASS", "cases": 1000, "definite": 835, "unknown": 165, "errors": 0, "output": "D:\\codex\\2026-11-11\\cha\\outputs\\ROS2-CoAudit-v1\\validation\\independent_result.json"}

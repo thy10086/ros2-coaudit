@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "name": "不完整观察不能证明终态缺失",
+  "before": {
+    "deployment": "before.json",
+    "policy": "before.policy.xml"
+  },
+  "after": {
+    "deployment": "after.json",
+    "policy": "after.policy.xml"
+  },
+  "contract": "contract.json",
+  "trace": "trace.json"
+}

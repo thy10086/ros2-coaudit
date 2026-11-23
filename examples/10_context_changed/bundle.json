@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "name": "部署上下文改变且无任务迁移证明",
+  "before": {
+    "deployment": "before.json",
+    "policy": "before.policy.xml"
+  },
+  "after": {
+    "deployment": "after.json",
+    "policy": "after.policy.xml"
+  },
+  "contract": "contract.json",
+  "trace": "trace.json"
+}

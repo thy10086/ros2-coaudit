@@ -1,0 +1,2015 @@
+{
+  "schema_version": 1,
+  "scope": "synthetic algorithm demonstration",
+  "results": [
+    {
+      "schema_version": 1,
+      "name": "01_shared_binding_correlation",
+      "input_status": "VALID",
+      "input_errors": [],
+      "limitations": [
+        "Synthetic normalized authorization atoms and finite protocol graphs only.",
+        "No ROS connection, launch execution, DDS/XML parsing, network scanning, or policy deployment.",
+        "Shared-binding digests are declared assumptions, not verified artifact hashes.",
+        "Paths establish authorized communication prerequisites, not delivery, liveness, deadlines, or physical safety.",
+        "A path may differ per world; this is not proof of one executable strategy for all worlds.",
+        "Trace obligations and real runtime enforcement are not implemented."
+      ],
+      "model_sha256": "18044ffd992b38e7d69185097c47540b490669ee14fadd4a98f96079d968f328",
+      "evidence_scope": "declared synthetic finite model; no external artifact verification",
+      "persistent_obligation_ids": [
+        "existing-goal-1"
+      ],
+      "shared_bindings": {
+        "applied": [
+          {
+            "variable": "namespace",
+            "relation": "declared_unchanged",
+            "basis_ref": "synthetic assumption E1; no external artifact validated",
+            "before_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "after_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "before_context": "deployment-X",
+            "after_context": "deployment-X"
+          }
+        ],
+        "ignored": []
+      },
+      "world_evaluations": {
+        "before": [
+          {
+            "world_id": "before-A",
+            "assignment": {
+              "namespace": "A"
+            },
+            "admit_new_goal_metadata": true,
+            "value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": true,
+                "authorized_path": [
+                  "cancel",
+                  "fallback"
+                ],
+                "possible_path": [
+                  "cancel",
+                  "fallback"
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel",
+                "value": true,
+                "reasons": []
+              },
+              {
+                "edge_id": "fallback",
+                "value": true,
+                "reasons": []
+              }
+            ]
+          },
+          {
+            "world_id": "before-B",
+            "assignment": {
+              "namespace": "B"
+            },
+            "admit_new_goal_metadata": true,
+            "value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": false,
+                "authorized_path": null,
+                "possible_path": null
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel",
+                "value": false,
+                "reasons": [
+                  "denied capability: cancel_req",
+                  "denied capability: cancel_reply"
+                ]
+              },
+              {
+                "edge_id": "fallback",
+                "value": false,
+                "reasons": [
+                  "denied capability: fallback_req",
+                  "denied capability: fallback_ack"
+                ]
+              }
+            ]
+          }
+        ],
+        "after": [
+          {
+            "world_id": "after-A",
+            "assignment": {
+              "namespace": "A"
+            },
+            "admit_new_goal_metadata": true,
+            "value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": true,
+                "authorized_path": [
+                  "cancel",
+                  "fallback"
+                ],
+                "possible_path": [
+                  "cancel",
+                  "fallback"
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel",
+                "value": true,
+                "reasons": []
+              },
+              {
+                "edge_id": "fallback",
+                "value": true,
+                "reasons": []
+              }
+            ]
+          },
+          {
+            "world_id": "after-B",
+            "assignment": {
+              "namespace": "B"
+            },
+            "admit_new_goal_metadata": true,
+            "value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": false,
+                "authorized_path": null,
+                "possible_path": null
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel",
+                "value": false,
+                "reasons": [
+                  "denied capability: cancel_req",
+                  "denied capability: cancel_reply"
+                ]
+              },
+              {
+                "edge_id": "fallback",
+                "value": false,
+                "reasons": [
+                  "denied capability: fallback_req",
+                  "denied capability: fallback_ack"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "unmatched_worlds": {
+        "before": [],
+        "after": []
+      },
+      "correlated": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "UNKNOWN",
+            "reason": "conditional",
+            "cases": 2
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "UNKNOWN",
+            "reason": "conditional",
+            "cases": 2
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 2
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before-A",
+            "after_world": "after-A",
+            "before_value": true,
+            "after_value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": true,
+                "after_value": true,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          },
+          {
+            "before_world": "before-B",
+            "after_world": "after-B",
+            "before_value": false,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": false,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          }
+        ]
+      },
+      "independent_baseline": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "UNKNOWN",
+            "reason": "conditional",
+            "cases": 2
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "UNKNOWN",
+            "reason": "conditional",
+            "cases": 2
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "UNKNOWN",
+            "reason": "conditional",
+            "cases": 4
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before-A",
+            "after_world": "after-A",
+            "before_value": true,
+            "after_value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": true,
+                "after_value": true,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          },
+          {
+            "before_world": "before-A",
+            "after_world": "after-B",
+            "before_value": true,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": true,
+                "after_value": false,
+                "no_new_regression": false
+              }
+            ],
+            "no_new_regression": false
+          },
+          {
+            "before_world": "before-B",
+            "after_world": "after-A",
+            "before_value": false,
+            "after_value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": true,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          },
+          {
+            "before_world": "before-B",
+            "after_world": "after-B",
+            "before_value": false,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": false,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          }
+        ]
+      },
+      "source_fixture": "01_shared_binding_correlation.json"
+    },
+    {
+      "schema_version": 1,
+      "name": "02_mutually_exclusive_edges",
+      "input_status": "VALID",
+      "input_errors": [],
+      "limitations": [
+        "Synthetic normalized authorization atoms and finite protocol graphs only.",
+        "No ROS connection, launch execution, DDS/XML parsing, network scanning, or policy deployment.",
+        "Shared-binding digests are declared assumptions, not verified artifact hashes.",
+        "Paths establish authorized communication prerequisites, not delivery, liveness, deadlines, or physical safety.",
+        "A path may differ per world; this is not proof of one executable strategy for all worlds.",
+        "Trace obligations and real runtime enforcement are not implemented."
+      ],
+      "model_sha256": "e0c83376ccea45a7d4690a42569e7177d08442a67bcab279b51cb56fdb0c24a9",
+      "evidence_scope": "declared synthetic finite model; no external artifact verification",
+      "persistent_obligation_ids": [
+        "existing-goal-1"
+      ],
+      "shared_bindings": {
+        "applied": [],
+        "ignored": []
+      },
+      "world_evaluations": {
+        "before": [
+          {
+            "world_id": "before-A",
+            "assignment": {
+              "mode": "A"
+            },
+            "admit_new_goal_metadata": true,
+            "value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": false,
+                "authorized_path": null,
+                "possible_path": null
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel_only_in_A",
+                "value": true,
+                "reasons": []
+              },
+              {
+                "edge_id": "fallback_only_in_B",
+                "value": false,
+                "reasons": [
+                  "guard mismatch: mode"
+                ]
+              }
+            ]
+          },
+          {
+            "world_id": "before-B",
+            "assignment": {
+              "mode": "B"
+            },
+            "admit_new_goal_metadata": true,
+            "value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": false,
+                "authorized_path": null,
+                "possible_path": null
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel_only_in_A",
+                "value": false,
+                "reasons": [
+                  "guard mismatch: mode"
+                ]
+              },
+              {
+                "edge_id": "fallback_only_in_B",
+                "value": true,
+                "reasons": []
+              }
+            ]
+          }
+        ],
+        "after": [
+          {
+            "world_id": "after-A",
+            "assignment": {
+              "mode": "A"
+            },
+            "admit_new_goal_metadata": true,
+            "value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": false,
+                "authorized_path": null,
+                "possible_path": null
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel_only_in_A",
+                "value": true,
+                "reasons": []
+              },
+              {
+                "edge_id": "fallback_only_in_B",
+                "value": false,
+                "reasons": [
+                  "guard mismatch: mode"
+                ]
+              }
+            ]
+          },
+          {
+            "world_id": "after-B",
+            "assignment": {
+              "mode": "B"
+            },
+            "admit_new_goal_metadata": true,
+            "value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": false,
+                "authorized_path": null,
+                "possible_path": null
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel_only_in_A",
+                "value": false,
+                "reasons": [
+                  "guard mismatch: mode"
+                ]
+              },
+              {
+                "edge_id": "fallback_only_in_B",
+                "value": true,
+                "reasons": []
+              }
+            ]
+          }
+        ]
+      },
+      "unmatched_worlds": {
+        "before": [],
+        "after": []
+      },
+      "correlated": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 2
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 2
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 4
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before-A",
+            "after_world": "after-A",
+            "before_value": false,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": false,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          },
+          {
+            "before_world": "before-A",
+            "after_world": "after-B",
+            "before_value": false,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": false,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          },
+          {
+            "before_world": "before-B",
+            "after_world": "after-A",
+            "before_value": false,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": false,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          },
+          {
+            "before_world": "before-B",
+            "after_world": "after-B",
+            "before_value": false,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": false,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          }
+        ]
+      },
+      "independent_baseline": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 2
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 2
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 4
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before-A",
+            "after_world": "after-A",
+            "before_value": false,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": false,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          },
+          {
+            "before_world": "before-A",
+            "after_world": "after-B",
+            "before_value": false,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": false,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          },
+          {
+            "before_world": "before-B",
+            "after_world": "after-A",
+            "before_value": false,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": false,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          },
+          {
+            "before_world": "before-B",
+            "after_world": "after-B",
+            "before_value": false,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": false,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          }
+        ]
+      },
+      "unsound_union_demonstration": {
+        "warning": "Intentionally unsound: never use as an audit verdict.",
+        "versions": {
+          "before": [
+            {
+              "obligation_id": "existing-goal-1",
+              "union_path": [
+                "cancel_only_in_A",
+                "fallback_only_in_B"
+              ]
+            }
+          ],
+          "after": [
+            {
+              "obligation_id": "existing-goal-1",
+              "union_path": [
+                "cancel_only_in_A",
+                "fallback_only_in_B"
+              ]
+            }
+          ]
+        }
+      },
+      "source_fixture": "02_mutually_exclusive_edges.json"
+    },
+    {
+      "schema_version": 1,
+      "name": "03_existing_task_survives_admission_denial",
+      "input_status": "VALID",
+      "input_errors": [],
+      "limitations": [
+        "Synthetic normalized authorization atoms and finite protocol graphs only.",
+        "No ROS connection, launch execution, DDS/XML parsing, network scanning, or policy deployment.",
+        "Shared-binding digests are declared assumptions, not verified artifact hashes.",
+        "Paths establish authorized communication prerequisites, not delivery, liveness, deadlines, or physical safety.",
+        "A path may differ per world; this is not proof of one executable strategy for all worlds.",
+        "Trace obligations and real runtime enforcement are not implemented."
+      ],
+      "model_sha256": "2a89ba31c3995cf7988dddc060ceb8585bf99f179f31d24e1807768fef8e688a",
+      "evidence_scope": "declared synthetic finite model; no external artifact verification",
+      "persistent_obligation_ids": [
+        "existing-goal-1"
+      ],
+      "shared_bindings": {
+        "applied": [],
+        "ignored": []
+      },
+      "world_evaluations": {
+        "before": [
+          {
+            "world_id": "before",
+            "assignment": {},
+            "admit_new_goal_metadata": true,
+            "value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": true,
+                "authorized_path": [
+                  "cancel",
+                  "fallback"
+                ],
+                "possible_path": [
+                  "cancel",
+                  "fallback"
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel",
+                "value": true,
+                "reasons": []
+              },
+              {
+                "edge_id": "fallback",
+                "value": true,
+                "reasons": []
+              }
+            ]
+          }
+        ],
+        "after": [
+          {
+            "world_id": "after",
+            "assignment": {},
+            "admit_new_goal_metadata": false,
+            "value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": false,
+                "authorized_path": null,
+                "possible_path": null
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel",
+                "value": false,
+                "reasons": [
+                  "denied capability: cancel_reply"
+                ]
+              },
+              {
+                "edge_id": "fallback",
+                "value": true,
+                "reasons": []
+              }
+            ]
+          }
+        ]
+      },
+      "unmatched_worlds": {
+        "before": [],
+        "after": []
+      },
+      "correlated": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 1
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 1
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before",
+            "after_world": "after",
+            "before_value": true,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": true,
+                "after_value": false,
+                "no_new_regression": false
+              }
+            ],
+            "no_new_regression": false
+          }
+        ]
+      },
+      "independent_baseline": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 1
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 1
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before",
+            "after_world": "after",
+            "before_value": true,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": true,
+                "after_value": false,
+                "no_new_regression": false
+              }
+            ],
+            "no_new_regression": false
+          }
+        ]
+      },
+      "source_fixture": "03_existing_task_survives_admission_denial.json"
+    },
+    {
+      "schema_version": 1,
+      "name": "04_legitimate_alternative_path",
+      "input_status": "VALID",
+      "input_errors": [],
+      "limitations": [
+        "Synthetic normalized authorization atoms and finite protocol graphs only.",
+        "No ROS connection, launch execution, DDS/XML parsing, network scanning, or policy deployment.",
+        "Shared-binding digests are declared assumptions, not verified artifact hashes.",
+        "Paths establish authorized communication prerequisites, not delivery, liveness, deadlines, or physical safety.",
+        "A path may differ per world; this is not proof of one executable strategy for all worlds.",
+        "Trace obligations and real runtime enforcement are not implemented."
+      ],
+      "model_sha256": "22eb72e97690ca30018005c116e04c0996a82920e160fe13800736e3758bafe7",
+      "evidence_scope": "declared synthetic finite model; no external artifact verification",
+      "persistent_obligation_ids": [
+        "existing-goal-1"
+      ],
+      "shared_bindings": {
+        "applied": [],
+        "ignored": []
+      },
+      "world_evaluations": {
+        "before": [
+          {
+            "world_id": "before",
+            "assignment": {},
+            "admit_new_goal_metadata": true,
+            "value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": true,
+                "authorized_path": [
+                  "cancel",
+                  "fallback"
+                ],
+                "possible_path": [
+                  "cancel",
+                  "fallback"
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel",
+                "value": true,
+                "reasons": []
+              },
+              {
+                "edge_id": "fallback",
+                "value": true,
+                "reasons": []
+              }
+            ]
+          }
+        ],
+        "after": [
+          {
+            "world_id": "after",
+            "assignment": {
+              "independent_stop_ready": true
+            },
+            "admit_new_goal_metadata": true,
+            "value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": true,
+                "authorized_path": [
+                  "independent_stop"
+                ],
+                "possible_path": [
+                  "independent_stop"
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "independent_stop",
+                "value": true,
+                "reasons": []
+              }
+            ]
+          }
+        ]
+      },
+      "unmatched_worlds": {
+        "before": [],
+        "after": []
+      },
+      "correlated": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before",
+            "after_world": "after",
+            "before_value": true,
+            "after_value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": true,
+                "after_value": true,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          }
+        ]
+      },
+      "independent_baseline": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before",
+            "after_world": "after",
+            "before_value": true,
+            "after_value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": true,
+                "after_value": true,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          }
+        ]
+      },
+      "source_fixture": "04_legitimate_alternative_path.json"
+    },
+    {
+      "schema_version": 1,
+      "name": "05_same_names_without_binding_evidence",
+      "input_status": "VALID",
+      "input_errors": [],
+      "limitations": [
+        "Synthetic normalized authorization atoms and finite protocol graphs only.",
+        "No ROS connection, launch execution, DDS/XML parsing, network scanning, or policy deployment.",
+        "Shared-binding digests are declared assumptions, not verified artifact hashes.",
+        "Paths establish authorized communication prerequisites, not delivery, liveness, deadlines, or physical safety.",
+        "A path may differ per world; this is not proof of one executable strategy for all worlds.",
+        "Trace obligations and real runtime enforcement are not implemented."
+      ],
+      "model_sha256": "598e3ec3ae95cf564603f524637b6e1163bdb667ed85d18abac64733b4bf8cd8",
+      "evidence_scope": "declared synthetic finite model; no external artifact verification",
+      "persistent_obligation_ids": [
+        "existing-goal-1"
+      ],
+      "shared_bindings": {
+        "applied": [],
+        "ignored": []
+      },
+      "world_evaluations": {
+        "before": [
+          {
+            "world_id": "before-A",
+            "assignment": {
+              "namespace": "A"
+            },
+            "admit_new_goal_metadata": true,
+            "value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": true,
+                "authorized_path": [
+                  "cancel",
+                  "fallback"
+                ],
+                "possible_path": [
+                  "cancel",
+                  "fallback"
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel",
+                "value": true,
+                "reasons": []
+              },
+              {
+                "edge_id": "fallback",
+                "value": true,
+                "reasons": []
+              }
+            ]
+          },
+          {
+            "world_id": "before-B",
+            "assignment": {
+              "namespace": "B"
+            },
+            "admit_new_goal_metadata": true,
+            "value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": false,
+                "authorized_path": null,
+                "possible_path": null
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel",
+                "value": false,
+                "reasons": [
+                  "denied capability: cancel_req",
+                  "denied capability: cancel_reply"
+                ]
+              },
+              {
+                "edge_id": "fallback",
+                "value": false,
+                "reasons": [
+                  "denied capability: fallback_req",
+                  "denied capability: fallback_ack"
+                ]
+              }
+            ]
+          }
+        ],
+        "after": [
+          {
+            "world_id": "after-A",
+            "assignment": {
+              "namespace": "A"
+            },
+            "admit_new_goal_metadata": true,
+            "value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": true,
+                "authorized_path": [
+                  "cancel",
+                  "fallback"
+                ],
+                "possible_path": [
+                  "cancel",
+                  "fallback"
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel",
+                "value": true,
+                "reasons": []
+              },
+              {
+                "edge_id": "fallback",
+                "value": true,
+                "reasons": []
+              }
+            ]
+          },
+          {
+            "world_id": "after-B",
+            "assignment": {
+              "namespace": "B"
+            },
+            "admit_new_goal_metadata": true,
+            "value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": false,
+                "authorized_path": null,
+                "possible_path": null
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel",
+                "value": false,
+                "reasons": [
+                  "denied capability: cancel_req",
+                  "denied capability: cancel_reply"
+                ]
+              },
+              {
+                "edge_id": "fallback",
+                "value": false,
+                "reasons": [
+                  "denied capability: fallback_req",
+                  "denied capability: fallback_ack"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "unmatched_worlds": {
+        "before": [],
+        "after": []
+      },
+      "correlated": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "UNKNOWN",
+            "reason": "conditional",
+            "cases": 2
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "UNKNOWN",
+            "reason": "conditional",
+            "cases": 2
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "UNKNOWN",
+            "reason": "conditional",
+            "cases": 4
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before-A",
+            "after_world": "after-A",
+            "before_value": true,
+            "after_value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": true,
+                "after_value": true,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          },
+          {
+            "before_world": "before-A",
+            "after_world": "after-B",
+            "before_value": true,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": true,
+                "after_value": false,
+                "no_new_regression": false
+              }
+            ],
+            "no_new_regression": false
+          },
+          {
+            "before_world": "before-B",
+            "after_world": "after-A",
+            "before_value": false,
+            "after_value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": true,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          },
+          {
+            "before_world": "before-B",
+            "after_world": "after-B",
+            "before_value": false,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": false,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          }
+        ]
+      },
+      "independent_baseline": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "UNKNOWN",
+            "reason": "conditional",
+            "cases": 2
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "UNKNOWN",
+            "reason": "conditional",
+            "cases": 2
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "UNKNOWN",
+            "reason": "conditional",
+            "cases": 4
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before-A",
+            "after_world": "after-A",
+            "before_value": true,
+            "after_value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": true,
+                "after_value": true,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          },
+          {
+            "before_world": "before-A",
+            "after_world": "after-B",
+            "before_value": true,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": true,
+                "after_value": false,
+                "no_new_regression": false
+              }
+            ],
+            "no_new_regression": false
+          },
+          {
+            "before_world": "before-B",
+            "after_world": "after-A",
+            "before_value": false,
+            "after_value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": true,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          },
+          {
+            "before_world": "before-B",
+            "after_world": "after-B",
+            "before_value": false,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": false,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          }
+        ]
+      },
+      "source_fixture": "05_same_names_without_binding_evidence.json"
+    },
+    {
+      "schema_version": 1,
+      "name": "06_incomplete_capability_domain",
+      "input_status": "INCOMPLETE",
+      "input_errors": [],
+      "limitations": [
+        "Synthetic normalized authorization atoms and finite protocol graphs only.",
+        "No ROS connection, launch execution, DDS/XML parsing, network scanning, or policy deployment.",
+        "Shared-binding digests are declared assumptions, not verified artifact hashes.",
+        "Paths establish authorized communication prerequisites, not delivery, liveness, deadlines, or physical safety.",
+        "A path may differ per world; this is not proof of one executable strategy for all worlds.",
+        "Trace obligations and real runtime enforcement are not implemented."
+      ],
+      "model_sha256": "ae48a430eb2c0342f75e245e2865d7a1f4f5c0d2616e8ddc3269c649663d3d3e",
+      "evidence_scope": "declared synthetic finite model; no external artifact verification",
+      "persistent_obligation_ids": [
+        "existing-goal-1"
+      ],
+      "shared_bindings": {
+        "applied": [],
+        "ignored": []
+      },
+      "world_evaluations": {
+        "before": [
+          {
+            "world_id": "before",
+            "assignment": {},
+            "admit_new_goal_metadata": true,
+            "value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": true,
+                "authorized_path": [
+                  "cancel",
+                  "fallback"
+                ],
+                "possible_path": [
+                  "cancel",
+                  "fallback"
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel",
+                "value": true,
+                "reasons": []
+              },
+              {
+                "edge_id": "fallback",
+                "value": true,
+                "reasons": []
+              }
+            ]
+          }
+        ],
+        "after": [
+          {
+            "world_id": "after",
+            "assignment": {},
+            "admit_new_goal_metadata": true,
+            "value": null,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": null,
+                "authorized_path": null,
+                "possible_path": [
+                  "cancel",
+                  "fallback"
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel",
+                "value": true,
+                "reasons": []
+              },
+              {
+                "edge_id": "fallback",
+                "value": null,
+                "reasons": [
+                  "unknown capability: fallback_ack"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "unmatched_worlds": {
+        "before": [],
+        "after": []
+      },
+      "correlated": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "UNKNOWN",
+            "reason": "incomplete",
+            "cases": 1
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "UNKNOWN",
+            "reason": "incomplete",
+            "cases": 1
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before",
+            "after_world": "after",
+            "before_value": true,
+            "after_value": null,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": true,
+                "after_value": null,
+                "no_new_regression": null
+              }
+            ],
+            "no_new_regression": null
+          }
+        ]
+      },
+      "independent_baseline": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "UNKNOWN",
+            "reason": "incomplete",
+            "cases": 1
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "UNKNOWN",
+            "reason": "incomplete",
+            "cases": 1
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before",
+            "after_world": "after",
+            "before_value": true,
+            "after_value": null,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": true,
+                "after_value": null,
+                "no_new_regression": null
+              }
+            ],
+            "no_new_regression": null
+          }
+        ]
+      },
+      "source_fixture": "06_incomplete_capability_domain.json"
+    },
+    {
+      "schema_version": 1,
+      "name": "07_preexisting_deficiency_not_hidden",
+      "input_status": "VALID",
+      "input_errors": [],
+      "limitations": [
+        "Synthetic normalized authorization atoms and finite protocol graphs only.",
+        "No ROS connection, launch execution, DDS/XML parsing, network scanning, or policy deployment.",
+        "Shared-binding digests are declared assumptions, not verified artifact hashes.",
+        "Paths establish authorized communication prerequisites, not delivery, liveness, deadlines, or physical safety.",
+        "A path may differ per world; this is not proof of one executable strategy for all worlds.",
+        "Trace obligations and real runtime enforcement are not implemented."
+      ],
+      "model_sha256": "1ac92446421b33e15615959eaaa8904eee3f6c90a2933f762c1c42ebb07033c2",
+      "evidence_scope": "declared synthetic finite model; no external artifact verification",
+      "persistent_obligation_ids": [
+        "existing-goal-1"
+      ],
+      "shared_bindings": {
+        "applied": [],
+        "ignored": []
+      },
+      "world_evaluations": {
+        "before": [
+          {
+            "world_id": "before",
+            "assignment": {},
+            "admit_new_goal_metadata": true,
+            "value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": false,
+                "authorized_path": null,
+                "possible_path": null
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel",
+                "value": false,
+                "reasons": [
+                  "denied capability: cancel_req",
+                  "denied capability: cancel_reply"
+                ]
+              },
+              {
+                "edge_id": "fallback",
+                "value": false,
+                "reasons": [
+                  "denied capability: fallback_req",
+                  "denied capability: fallback_ack"
+                ]
+              }
+            ]
+          }
+        ],
+        "after": [
+          {
+            "world_id": "after",
+            "assignment": {},
+            "admit_new_goal_metadata": true,
+            "value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": false,
+                "authorized_path": null,
+                "possible_path": null
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel",
+                "value": false,
+                "reasons": [
+                  "denied capability: cancel_req",
+                  "denied capability: cancel_reply"
+                ]
+              },
+              {
+                "edge_id": "fallback",
+                "value": false,
+                "reasons": [
+                  "denied capability: fallback_req",
+                  "denied capability: fallback_ack"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "unmatched_worlds": {
+        "before": [],
+        "after": []
+      },
+      "correlated": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 1
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 1
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before",
+            "after_world": "after",
+            "before_value": false,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": false,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          }
+        ]
+      },
+      "independent_baseline": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 1
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 1
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before",
+            "after_world": "after",
+            "before_value": false,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": false,
+                "after_value": false,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": true
+          }
+        ]
+      },
+      "source_fixture": "07_preexisting_deficiency_not_hidden.json"
+    },
+    {
+      "schema_version": 1,
+      "name": "08_unknown_alternative_precondition",
+      "input_status": "INCOMPLETE",
+      "input_errors": [],
+      "limitations": [
+        "Synthetic normalized authorization atoms and finite protocol graphs only.",
+        "No ROS connection, launch execution, DDS/XML parsing, network scanning, or policy deployment.",
+        "Shared-binding digests are declared assumptions, not verified artifact hashes.",
+        "Paths establish authorized communication prerequisites, not delivery, liveness, deadlines, or physical safety.",
+        "A path may differ per world; this is not proof of one executable strategy for all worlds.",
+        "Trace obligations and real runtime enforcement are not implemented."
+      ],
+      "model_sha256": "df96e13cb2b4cc91d3162b202e381c706b112c6806b11af37e9ff18830b17670",
+      "evidence_scope": "declared synthetic finite model; no external artifact verification",
+      "persistent_obligation_ids": [
+        "existing-goal-1"
+      ],
+      "shared_bindings": {
+        "applied": [],
+        "ignored": []
+      },
+      "world_evaluations": {
+        "before": [
+          {
+            "world_id": "before",
+            "assignment": {},
+            "admit_new_goal_metadata": true,
+            "value": true,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": true,
+                "authorized_path": [
+                  "cancel",
+                  "fallback"
+                ],
+                "possible_path": [
+                  "cancel",
+                  "fallback"
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "cancel",
+                "value": true,
+                "reasons": []
+              },
+              {
+                "edge_id": "fallback",
+                "value": true,
+                "reasons": []
+              }
+            ]
+          }
+        ],
+        "after": [
+          {
+            "world_id": "after",
+            "assignment": {},
+            "admit_new_goal_metadata": true,
+            "value": null,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "value": null,
+                "authorized_path": null,
+                "possible_path": [
+                  "independent_stop"
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "independent_stop",
+                "value": null,
+                "reasons": [
+                  "unknown guard variable: independent_stop_ready"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "unmatched_worlds": {
+        "before": [],
+        "after": []
+      },
+      "correlated": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "UNKNOWN",
+            "reason": "incomplete",
+            "cases": 1
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "UNKNOWN",
+            "reason": "incomplete",
+            "cases": 1
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before",
+            "after_world": "after",
+            "before_value": true,
+            "after_value": null,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": true,
+                "after_value": null,
+                "no_new_regression": null
+              }
+            ],
+            "no_new_regression": null
+          }
+        ]
+      },
+      "independent_baseline": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "PASS",
+            "reason": "all_cases_true",
+            "cases": 1
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "UNKNOWN",
+            "reason": "incomplete",
+            "cases": 1
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "UNKNOWN",
+            "reason": "incomplete",
+            "cases": 1
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before",
+            "after_world": "after",
+            "before_value": true,
+            "after_value": null,
+            "obligations": [
+              {
+                "obligation_id": "existing-goal-1",
+                "before_value": true,
+                "after_value": null,
+                "no_new_regression": null
+              }
+            ],
+            "no_new_regression": null
+          }
+        ]
+      },
+      "source_fixture": "08_unknown_alternative_precondition.json"
+    },
+    {
+      "schema_version": 1,
+      "name": "09_one_broken_task_must_not_mask_another_regression",
+      "input_status": "VALID",
+      "input_errors": [],
+      "limitations": [
+        "Synthetic normalized authorization atoms and finite protocol graphs only.",
+        "No ROS connection, launch execution, DDS/XML parsing, network scanning, or policy deployment.",
+        "Shared-binding digests are declared assumptions, not verified artifact hashes.",
+        "Paths establish authorized communication prerequisites, not delivery, liveness, deadlines, or physical safety.",
+        "A path may differ per world; this is not proof of one executable strategy for all worlds.",
+        "Trace obligations and real runtime enforcement are not implemented."
+      ],
+      "model_sha256": "7f83c5a053a97ca9a3f1c359abb81031cecc3567c32263a01eb756e2f3146b09",
+      "evidence_scope": "declared synthetic finite model; no external artifact verification",
+      "persistent_obligation_ids": [
+        "previously-healthy-task",
+        "already-broken-task"
+      ],
+      "shared_bindings": {
+        "applied": [],
+        "ignored": []
+      },
+      "world_evaluations": {
+        "before": [
+          {
+            "world_id": "before",
+            "assignment": {},
+            "admit_new_goal_metadata": true,
+            "value": false,
+            "obligations": [
+              {
+                "obligation_id": "previously-healthy-task",
+                "value": true,
+                "authorized_path": [
+                  "recover_healthy"
+                ],
+                "possible_path": [
+                  "recover_healthy"
+                ]
+              },
+              {
+                "obligation_id": "already-broken-task",
+                "value": false,
+                "authorized_path": null,
+                "possible_path": null
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "recover_healthy",
+                "value": true,
+                "reasons": []
+              },
+              {
+                "edge_id": "recover_broken",
+                "value": false,
+                "reasons": [
+                  "denied capability: broken_ack"
+                ]
+              }
+            ]
+          }
+        ],
+        "after": [
+          {
+            "world_id": "after",
+            "assignment": {},
+            "admit_new_goal_metadata": true,
+            "value": false,
+            "obligations": [
+              {
+                "obligation_id": "previously-healthy-task",
+                "value": false,
+                "authorized_path": null,
+                "possible_path": null
+              },
+              {
+                "obligation_id": "already-broken-task",
+                "value": false,
+                "authorized_path": null,
+                "possible_path": null
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "recover_healthy",
+                "value": false,
+                "reasons": [
+                  "denied capability: healthy_ack"
+                ]
+              },
+              {
+                "edge_id": "recover_broken",
+                "value": false,
+                "reasons": [
+                  "denied capability: broken_ack"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "unmatched_worlds": {
+        "before": [],
+        "after": []
+      },
+      "correlated": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 1
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 1
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 1
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before",
+            "after_world": "after",
+            "before_value": false,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "previously-healthy-task",
+                "before_value": true,
+                "after_value": false,
+                "no_new_regression": false
+              },
+              {
+                "obligation_id": "already-broken-task",
+                "before_value": false,
+                "after_value": false,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": false
+          }
+        ]
+      },
+      "independent_baseline": {
+        "verdicts": {
+          "before_absolute_recovery_communication": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 1
+          },
+          "after_absolute_recovery_communication": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 1
+          },
+          "no_new_recovery_communication_regression": {
+            "verdict": "FAIL",
+            "reason": "all_cases_false",
+            "cases": 1
+          }
+        },
+        "pairs": [
+          {
+            "before_world": "before",
+            "after_world": "after",
+            "before_value": false,
+            "after_value": false,
+            "obligations": [
+              {
+                "obligation_id": "previously-healthy-task",
+                "before_value": true,
+                "after_value": false,
+                "no_new_regression": false
+              },
+              {
+                "obligation_id": "already-broken-task",
+                "before_value": false,
+                "after_value": false,
+                "no_new_regression": true
+              }
+            ],
+            "no_new_regression": false
+          }
+        ]
+      },
+      "source_fixture": "09_one_broken_task_must_not_mask_another_regression.json"
+    }
+  ]
+}

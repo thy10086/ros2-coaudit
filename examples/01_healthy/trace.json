@@ -1,0 +1,34 @@
+{
+  "clock": "monotonic_ms",
+  "complete": true,
+  "window_start_ms": 0,
+  "window_end_ms": 2000,
+  "events": [
+    {
+      "goal_id": "goal-001",
+      "event": "accepted",
+      "ts_ms": 100
+    },
+    {
+      "goal_id": "goal-001",
+      "event": "cancel_requested",
+      "ts_ms": 200
+    },
+    {
+      "goal_id": "goal-001",
+      "event": "cancel_accepted",
+      "ts_ms": 250
+    },
+    {
+      "goal_id": "goal-001",
+      "event": "terminal",
+      "status": "CANCELED",
+      "ts_ms": 500
+    }
+  ],
+  "scope": {
+    "context_id": "sim-deployment-01",
+    "deployment_sha256": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "policy_sha256": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045"
+  }
+}

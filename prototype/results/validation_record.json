@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-12",
+  "python_version": "3.12.14",
+  "platform": "Windows",
+  "scope": "Synthetic normalized finite-world algorithm example",
+  "test_command": "python -B -X utf8 -m unittest discover -s tests -v",
+  "test_exit_code": 0,
+  "test_methods_passed": 34,
+  "boolean_oracle_combinations_inside_one_test": 64,
+  "fixture_count": 9,
+  "audit_command": "python -B -X utf8 audit.py --fixtures fixtures --output results/audit_results.json",
+  "audit_exit_code": 0,
+  "output": "results/audit_results.json",
+  "real_ros_or_dds_validation": false,
+  "external_artifact_hash_verification": false,
+  "trace_obligation_implementation": false
+}

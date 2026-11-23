@@ -1,0 +1,13 @@
+01_healthy: VALID / MODEL_PASS
+02_cancel_removed: VALID / BLOCK
+03_forbidden_grant: VALID / BLOCK
+04_security_disabled: VALID / BLOCK
+05_approved_fallback: VALID / MODEL_PASS
+06_unsupported_policy: INCOMPLETE / REVIEW
+07_missing_terminal: VALID / BLOCK
+08_truncated_trace: INCOMPLETE / REVIEW
+09_late_terminal: VALID / BLOCK
+10_context_changed: INCOMPLETE / REVIEW
+11_unknown_fallback: INCOMPLETE / REVIEW
+12_wrong_goal_terminal: VALID / BLOCK
+Open runs\demo\index.html

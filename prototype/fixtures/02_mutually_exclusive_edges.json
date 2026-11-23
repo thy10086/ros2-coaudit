@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "name": "02_mutually_exclusive_edges",
+  "scope": "Synthetic finite model; DONE means communication prerequisites only.",
+  "before": {
+    "worlds": [
+      {
+        "id": "before-A",
+        "assignment": {
+          "mode": "A"
+        },
+        "capability_domain": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "allowed": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "complete": true,
+        "admit_new_goal": true
+      },
+      {
+        "id": "before-B",
+        "assignment": {
+          "mode": "B"
+        },
+        "capability_domain": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "allowed": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "complete": true,
+        "admit_new_goal": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "cancel_only_in_A",
+        "from": "ACTIVE",
+        "to": "CANCEL_ACK",
+        "requires": [
+          "cancel_req",
+          "cancel_reply"
+        ],
+        "when": {
+          "mode": "A"
+        }
+      },
+      {
+        "id": "fallback_only_in_B",
+        "from": "CANCEL_ACK",
+        "to": "DONE",
+        "requires": [
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "when": {
+          "mode": "B"
+        }
+      }
+    ]
+  },
+  "after": {
+    "worlds": [
+      {
+        "id": "after-A",
+        "assignment": {
+          "mode": "A"
+        },
+        "capability_domain": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "allowed": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "complete": true,
+        "admit_new_goal": true
+      },
+      {
+        "id": "after-B",
+        "assignment": {
+          "mode": "B"
+        },
+        "capability_domain": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "allowed": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "complete": true,
+        "admit_new_goal": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "cancel_only_in_A",
+        "from": "ACTIVE",
+        "to": "CANCEL_ACK",
+        "requires": [
+          "cancel_req",
+          "cancel_reply"
+        ],
+        "when": {
+          "mode": "A"
+        }
+      },
+      {
+        "id": "fallback_only_in_B",
+        "from": "CANCEL_ACK",
+        "to": "DONE",
+        "requires": [
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "when": {
+          "mode": "B"
+        }
+      }
+    ]
+  },
+  "obligations": [
+    {
+      "id": "existing-goal-1",
+      "start": "ACTIVE",
+      "targets": [
+        "DONE"
+      ],
+      "admitted_before": true
+    }
+  ],
+  "shared_bindings": [],
+  "include_unsound_union_demo": true,
+  "expected_verdicts": {
+    "correlated": [
+      "FAIL",
+      "FAIL",
+      "PASS"
+    ],
+    "independent_baseline": [
+      "FAIL",
+      "FAIL",
+      "PASS"
+    ]
+  }
+}

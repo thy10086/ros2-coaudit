@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "name": "09_one_broken_task_must_not_mask_another_regression",
+  "scope": "Synthetic finite model; DONE means communication prerequisites only.",
+  "before": {
+    "worlds": [
+      {
+        "id": "before",
+        "assignment": {},
+        "capability_domain": [
+          "healthy_ack",
+          "broken_ack"
+        ],
+        "allowed": [
+          "healthy_ack"
+        ],
+        "complete": true,
+        "admit_new_goal": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "recover_healthy",
+        "from": "HEALTHY_ACTIVE",
+        "to": "DONE",
+        "requires": [
+          "healthy_ack"
+        ],
+        "when": {}
+      },
+      {
+        "id": "recover_broken",
+        "from": "BROKEN_ACTIVE",
+        "to": "DONE",
+        "requires": [
+          "broken_ack"
+        ],
+        "when": {}
+      }
+    ]
+  },
+  "after": {
+    "worlds": [
+      {
+        "id": "after",
+        "assignment": {},
+        "capability_domain": [
+          "healthy_ack",
+          "broken_ack"
+        ],
+        "allowed": [],
+        "complete": true,
+        "admit_new_goal": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "recover_healthy",
+        "from": "HEALTHY_ACTIVE",
+        "to": "DONE",
+        "requires": [
+          "healthy_ack"
+        ],
+        "when": {}
+      },
+      {
+        "id": "recover_broken",
+        "from": "BROKEN_ACTIVE",
+        "to": "DONE",
+        "requires": [
+          "broken_ack"
+        ],
+        "when": {}
+      }
+    ]
+  },
+  "obligations": [
+    {
+      "id": "previously-healthy-task",
+      "start": "HEALTHY_ACTIVE",
+      "targets": [
+        "DONE"
+      ],
+      "admitted_before": true
+    },
+    {
+      "id": "already-broken-task",
+      "start": "BROKEN_ACTIVE",
+      "targets": [
+        "DONE"
+      ],
+      "admitted_before": true
+    }
+  ],
+  "shared_bindings": [],
+  "expected_verdicts": {
+    "correlated": [
+      "FAIL",
+      "FAIL",
+      "FAIL"
+    ],
+    "independent_baseline": [
+      "FAIL",
+      "FAIL",
+      "FAIL"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "obligations": [
+    {
+      "id": "navigate-1",
+      "goal_id": "goal-001",
+      "action": "/navigate",
+      "client": "client",
+      "server": "server",
+      "admitted_before": true,
+      "cancel_deadline_ms": 1000,
+      "fallback": {
+        "service": "/emergency_stop",
+        "client": "client",
+        "server": "server",
+        "approved": true
+      }
+    }
+  ],
+  "forbidden": [
+    {
+      "node": "client",
+      "resource": "/admin/command",
+      "operation": "publish"
+    }
+  ]
+}

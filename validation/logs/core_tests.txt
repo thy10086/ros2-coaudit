@@ -1,0 +1,39 @@
+test_all_nine_documented_fixtures (test_audit.FiniteAuditTests.test_all_nine_documented_fixtures) ... ok
+test_boolean_and_integer_guards_are_distinct (test_audit.FiniteAuditTests.test_boolean_and_integer_guards_are_distinct) ... ok
+test_changed_context_disables_relation (test_audit.FiniteAuditTests.test_changed_context_disables_relation) ... ok
+test_changed_digest_disables_relation (test_audit.FiniteAuditTests.test_changed_digest_disables_relation) ... ok
+test_cli_invalid_json_never_has_vacuous_pass (test_audit.FiniteAuditTests.test_cli_invalid_json_never_has_vacuous_pass) ... ok
+test_cli_nonstandard_json_constants_are_input_errors (test_audit.FiniteAuditTests.test_cli_nonstandard_json_constants_are_input_errors) ... ok
+test_cli_writes_machine_readable_fail_result_with_success_exit (test_audit.FiniteAuditTests.test_cli_writes_machine_readable_fail_result_with_success_exit) ... ok
+test_contradictory_shared_worlds_are_input_error (test_audit.FiniteAuditTests.test_contradictory_shared_worlds_are_input_error) ... ok
+test_duplicate_shared_declaration_cannot_mask_conflicting_evidence (test_audit.FiniteAuditTests.test_duplicate_shared_declaration_cannot_mask_conflicting_evidence) ... ok
+test_duplicate_world_ids_are_input_error (test_audit.FiniteAuditTests.test_duplicate_world_ids_are_input_error) ... ok
+test_empty_obligations_are_input_error (test_audit.FiniteAuditTests.test_empty_obligations_are_input_error) ... ok
+test_empty_worlds_are_input_error (test_audit.FiniteAuditTests.test_empty_worlds_are_input_error) ... ok
+test_finite_model_matches_independent_boolean_oracle (test_audit.FiniteAuditTests.test_finite_model_matches_independent_boolean_oracle) ... ok
+test_hash_and_certificate_are_deterministic (test_audit.FiniteAuditTests.test_hash_and_certificate_are_deterministic) ... ok
+test_incomplete_negative_permission_is_unknown (test_audit.FiniteAuditTests.test_incomplete_negative_permission_is_unknown) ... ok
+test_invalid_digest_disables_relation (test_audit.FiniteAuditTests.test_invalid_digest_disables_relation) ... ok
+test_known_positive_path_survives_unrelated_unknown_branch (test_audit.FiniteAuditTests.test_known_positive_path_survives_unrelated_unknown_branch) ... ok
+test_legitimate_alternative_avoids_endpoint_deletion_false_alarm (test_audit.FiniteAuditTests.test_legitimate_alternative_avoids_endpoint_deletion_false_alarm) ... ok
+test_malformed_model_is_reported_not_executed (test_audit.FiniteAuditTests.test_malformed_model_is_reported_not_executed) ... ok
+test_missing_basis_disables_relation (test_audit.FiniteAuditTests.test_missing_basis_disables_relation) ... ok
+test_missing_capability_coverage_does_not_mean_denied (test_audit.FiniteAuditTests.test_missing_capability_coverage_does_not_mean_denied) ... ok
+test_mutually_exclusive_edges_never_form_real_path (test_audit.FiniteAuditTests.test_mutually_exclusive_edges_never_form_real_path) ... ok
+test_new_admission_denial_preserves_existing_obligation (test_audit.FiniteAuditTests.test_new_admission_denial_preserves_existing_obligation) ... ok
+test_nonfinite_assignment_is_input_error_not_guard_mismatch (test_audit.FiniteAuditTests.test_nonfinite_assignment_is_input_error_not_guard_mismatch) ... ok
+test_nonfinite_guard_is_input_error_not_definite_failure (test_audit.FiniteAuditTests.test_nonfinite_guard_is_input_error_not_definite_failure) ... ok
+test_other_broken_task_does_not_mask_new_regression (test_audit.FiniteAuditTests.test_other_broken_task_does_not_mask_new_regression) ... ok
+test_partially_unmatched_worlds_are_not_silently_dropped (test_audit.FiniteAuditTests.test_partially_unmatched_worlds_are_not_silently_dropped) ... ok
+test_preexisting_deficiency_remains_visible (test_audit.FiniteAuditTests.test_preexisting_deficiency_remains_visible) ... ok
+test_same_variable_names_do_not_establish_correlation (test_audit.FiniteAuditTests.test_same_variable_names_do_not_establish_correlation) ... ok
+test_shared_binding_reduces_pairs_without_fixing_absolute_problem (test_audit.FiniteAuditTests.test_shared_binding_reduces_pairs_without_fixing_absolute_problem) ... ok
+test_unadmitted_obligation_is_not_silently_accepted (test_audit.FiniteAuditTests.test_unadmitted_obligation_is_not_silently_accepted) ... ok
+test_unknown_alternative_precondition_does_not_pass (test_audit.FiniteAuditTests.test_unknown_alternative_precondition_does_not_pass) ... ok
+test_unresolved_shared_variable_falls_back_to_cartesian (test_audit.FiniteAuditTests.test_unresolved_shared_variable_falls_back_to_cartesian) ... ok
+test_unsupported_relation_disables_correlation (test_audit.FiniteAuditTests.test_unsupported_relation_disables_correlation) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 0.877s
+
+OK

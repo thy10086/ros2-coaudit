@@ -1,0 +1,693 @@
+{
+  "result": "PASS",
+  "utc": "2026-11-17T00:39:40.399806+00:00",
+  "python": "3.12.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "commands": {
+    "v1_tests": {
+      "command": [
+        "python",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 80,
+      "log": "validation/logs/v1_tests.txt"
+    },
+    "core_tests": {
+      "command": [
+        "python",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "prototype/tests",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 34,
+      "log": "validation/logs/core_tests.txt"
+    },
+    "core_fixtures": {
+      "command": [
+        "python",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "prototype.audit",
+        "--fixtures",
+        "prototype/fixtures",
+        "--output",
+        "prototype/results/audit_results.json"
+      ],
+      "exit": 0,
+      "tests": null,
+      "log": "validation/logs/core_fixtures.txt"
+    },
+    "oracle": {
+      "command": [
+        "python",
+        "-B",
+        "-X",
+        "utf8",
+        "validation/independent_check.py",
+        "--prototype",
+        "prototype",
+        "--output",
+        "validation/independent_result.json"
+      ],
+      "exit": 0,
+      "tests": null,
+      "log": "validation/logs/oracle.txt"
+    },
+    "demo": {
+      "command": [
+        "python",
+        "-B",
+        "-X",
+        "utf8",
+        "run_demo.py",
+        "--output",
+        "runs/demo"
+      ],
+      "exit": 0,
+      "tests": null,
+      "log": "validation/logs/demo.txt"
+    }
+  },
+  "cases": [
+    {
+      "id": "01_healthy",
+      "name": "完整恢复通信与按期终态",
+      "input_status": "VALID",
+      "expected": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "PASS",
+        "decision": "MODEL_PASS"
+      },
+      "actual": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "PASS",
+        "decision": "MODEL_PASS"
+      },
+      "same_demo_json": true,
+      "same_embedded_html_json": true,
+      "evidence_hashes_match": true,
+      "trace_reason": "terminal_within_deadline",
+      "timing": {
+        "n": 30,
+        "median_ms": 10.183,
+        "p95_ms": 14.589
+      },
+      "output": "runs/demo/01_healthy/result.json",
+      "passed": true
+    },
+    {
+      "id": "02_cancel_removed",
+      "name": "权限收紧删除旧任务取消能力",
+      "input_status": "VALID",
+      "expected": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "FAIL",
+        "no_regression": "FAIL",
+        "trace": "PASS",
+        "decision": "BLOCK"
+      },
+      "actual": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "FAIL",
+        "no_regression": "FAIL",
+        "trace": "PASS",
+        "decision": "BLOCK"
+      },
+      "same_demo_json": true,
+      "same_embedded_html_json": true,
+      "evidence_hashes_match": true,
+      "trace_reason": "terminal_within_deadline",
+      "timing": {
+        "n": 30,
+        "median_ms": 10.672,
+        "p95_ms": 18.666
+      },
+      "output": "runs/demo/02_cancel_removed/result.json",
+      "passed": true
+    },
+    {
+      "id": "03_forbidden_grant",
+      "name": "恢复正常但出现禁止授权",
+      "input_status": "VALID",
+      "expected": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "FAIL",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "PASS",
+        "decision": "BLOCK"
+      },
+      "actual": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "FAIL",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "PASS",
+        "decision": "BLOCK"
+      },
+      "same_demo_json": true,
+      "same_embedded_html_json": true,
+      "evidence_hashes_match": true,
+      "trace_reason": "terminal_within_deadline",
+      "timing": {
+        "n": 30,
+        "median_ms": 11.874,
+        "p95_ms": 14.563
+      },
+      "output": "runs/demo/03_forbidden_grant/result.json",
+      "passed": true
+    },
+    {
+      "id": "04_security_disabled",
+      "name": "策略存在但配置关闭安全机制",
+      "input_status": "VALID",
+      "expected": {
+        "configuration_after": "FAIL",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "PASS",
+        "decision": "BLOCK"
+      },
+      "actual": {
+        "configuration_after": "FAIL",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "PASS",
+        "decision": "BLOCK"
+      },
+      "same_demo_json": true,
+      "same_embedded_html_json": true,
+      "evidence_hashes_match": true,
+      "trace_reason": "terminal_within_deadline",
+      "timing": {
+        "n": 30,
+        "median_ms": 10.119,
+        "p95_ms": 14.136
+      },
+      "output": "runs/demo/04_security_disabled/result.json",
+      "passed": true
+    },
+    {
+      "id": "05_approved_fallback",
+      "name": "取消能力缺失但批准回退服务可用",
+      "input_status": "VALID",
+      "expected": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "PASS",
+        "decision": "MODEL_PASS"
+      },
+      "actual": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "PASS",
+        "decision": "MODEL_PASS"
+      },
+      "same_demo_json": true,
+      "same_embedded_html_json": true,
+      "evidence_hashes_match": true,
+      "trace_reason": "terminal_within_deadline",
+      "timing": {
+        "n": 30,
+        "median_ms": 11.525,
+        "p95_ms": 16.286
+      },
+      "output": "runs/demo/05_approved_fallback/result.json",
+      "passed": true
+    },
+    {
+      "id": "06_unsupported_policy",
+      "name": "通配符超出解释器支持范围",
+      "input_status": "INCOMPLETE",
+      "expected": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "UNKNOWN",
+        "coverage_before": "PASS",
+        "coverage_after": "UNKNOWN",
+        "no_regression": "UNKNOWN",
+        "trace": "PASS",
+        "decision": "REVIEW"
+      },
+      "actual": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "UNKNOWN",
+        "coverage_before": "PASS",
+        "coverage_after": "UNKNOWN",
+        "no_regression": "UNKNOWN",
+        "trace": "PASS",
+        "decision": "REVIEW"
+      },
+      "same_demo_json": true,
+      "same_embedded_html_json": true,
+      "evidence_hashes_match": true,
+      "trace_reason": "terminal_within_deadline",
+      "timing": {
+        "n": 30,
+        "median_ms": 9.013,
+        "p95_ms": 15.352
+      },
+      "output": "runs/demo/06_unsupported_policy/result.json",
+      "passed": true
+    },
+    {
+      "id": "07_missing_terminal",
+      "name": "取消已接受但完整窗口没有终态",
+      "input_status": "VALID",
+      "expected": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "FAIL",
+        "decision": "BLOCK"
+      },
+      "actual": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "FAIL",
+        "decision": "BLOCK"
+      },
+      "same_demo_json": true,
+      "same_embedded_html_json": true,
+      "evidence_hashes_match": true,
+      "trace_reason": "deadline_exceeded_without_terminal",
+      "timing": {
+        "n": 30,
+        "median_ms": 11.727,
+        "p95_ms": 16.286
+      },
+      "output": "runs/demo/07_missing_terminal/result.json",
+      "passed": true
+    },
+    {
+      "id": "08_truncated_trace",
+      "name": "不完整观察不能证明终态缺失",
+      "input_status": "INCOMPLETE",
+      "expected": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "UNKNOWN",
+        "decision": "REVIEW"
+      },
+      "actual": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "UNKNOWN",
+        "decision": "REVIEW"
+      },
+      "same_demo_json": true,
+      "same_embedded_html_json": true,
+      "evidence_hashes_match": true,
+      "trace_reason": "incomplete_coverage",
+      "timing": {
+        "n": 30,
+        "median_ms": 10.621,
+        "p95_ms": 14.042
+      },
+      "output": "runs/demo/08_truncated_trace/result.json",
+      "passed": true
+    },
+    {
+      "id": "09_late_terminal",
+      "name": "终态晚于契约期限",
+      "input_status": "VALID",
+      "expected": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "FAIL",
+        "decision": "BLOCK"
+      },
+      "actual": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "FAIL",
+        "decision": "BLOCK"
+      },
+      "same_demo_json": true,
+      "same_embedded_html_json": true,
+      "evidence_hashes_match": true,
+      "trace_reason": "terminal_after_deadline",
+      "timing": {
+        "n": 30,
+        "median_ms": 9.428,
+        "p95_ms": 15.6
+      },
+      "output": "runs/demo/09_late_terminal/result.json",
+      "passed": true
+    },
+    {
+      "id": "10_context_changed",
+      "name": "部署上下文改变且无任务迁移证明",
+      "input_status": "INCOMPLETE",
+      "expected": {
+        "configuration_after": "PASS",
+        "migration": "UNKNOWN",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "PASS",
+        "decision": "REVIEW"
+      },
+      "actual": {
+        "configuration_after": "PASS",
+        "migration": "UNKNOWN",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "PASS",
+        "decision": "REVIEW"
+      },
+      "same_demo_json": true,
+      "same_embedded_html_json": true,
+      "evidence_hashes_match": true,
+      "trace_reason": "terminal_within_deadline",
+      "timing": {
+        "n": 30,
+        "median_ms": 10.069,
+        "p95_ms": 14.383
+      },
+      "output": "runs/demo/10_context_changed/result.json",
+      "passed": true
+    },
+    {
+      "id": "11_unknown_fallback",
+      "name": "回退前提未知",
+      "input_status": "INCOMPLETE",
+      "expected": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "UNKNOWN",
+        "no_regression": "UNKNOWN",
+        "trace": "PASS",
+        "decision": "REVIEW"
+      },
+      "actual": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "UNKNOWN",
+        "no_regression": "UNKNOWN",
+        "trace": "PASS",
+        "decision": "REVIEW"
+      },
+      "same_demo_json": true,
+      "same_embedded_html_json": true,
+      "evidence_hashes_match": true,
+      "trace_reason": "terminal_within_deadline",
+      "timing": {
+        "n": 30,
+        "median_ms": 10.164,
+        "p95_ms": 15.864
+      },
+      "output": "runs/demo/11_unknown_fallback/result.json",
+      "passed": true
+    },
+    {
+      "id": "12_wrong_goal_terminal",
+      "name": "其他目标终态不能履行本目标义务",
+      "input_status": "VALID",
+      "expected": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "FAIL",
+        "decision": "BLOCK"
+      },
+      "actual": {
+        "configuration_after": "PASS",
+        "migration": "PASS",
+        "authorization_after": "PASS",
+        "coverage_before": "PASS",
+        "coverage_after": "PASS",
+        "no_regression": "PASS",
+        "trace": "FAIL",
+        "decision": "BLOCK"
+      },
+      "same_demo_json": true,
+      "same_embedded_html_json": true,
+      "evidence_hashes_match": true,
+      "trace_reason": "deadline_exceeded_without_terminal",
+      "timing": {
+        "n": 30,
+        "median_ms": 9.704,
+        "p95_ms": 14.757
+      },
+      "output": "runs/demo/12_wrong_goal_terminal/result.json",
+      "passed": true
+    }
+  ],
+  "decision_counts": {
+    "MODEL_PASS": 2,
+    "BLOCK": 6,
+    "REVIEW": 4
+  },
+  "timing": {
+    "n": 360,
+    "median_ms": 10.352,
+    "p95_ms": 15.232,
+    "scope": "warm local bundle reads+audit only; no report rendering or ROS"
+  },
+  "oracle": {
+    "result": "PASS",
+    "timestamp_utc": "2026-11-17T00:39:34.868182+00:00",
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "random_seed": 20261112,
+    "independent_random_graph_cases": 1000,
+    "definite_verdicts_checked_against_all_completions": 835,
+    "unknown_verdicts": 165,
+    "fully_completed_oracle_cases": 3540,
+    "errors": 0,
+    "counterexamples": [],
+    "regressions": {
+      "persistent_obligation_after_new_admission_denial": {
+        "expected": [
+          "PASS",
+          "FAIL",
+          "FAIL"
+        ],
+        "actual": [
+          "PASS",
+          "FAIL",
+          "FAIL"
+        ],
+        "passed": true
+      },
+      "preexisting_failure_does_not_mask_another_regression": {
+        "expected": [
+          "FAIL",
+          "FAIL",
+          "FAIL"
+        ],
+        "actual": [
+          "FAIL",
+          "FAIL",
+          "FAIL"
+        ],
+        "passed": true
+      }
+    },
+    "generated_cases_sha256": "eb91c48380de9766bab515b7eba43615b36089bedc98020fe4d1d9641742e913",
+    "files_sha256": {
+      "audit.py": "d01aca037db4d2eea8be27f993a5c5e5f6d95a279c5333dcf5fd877d792f4618",
+      "independent_check.py": "ac33d8e833ae0eba4be4b919c9b3ea80ff4bc196d61b344b13380261f6c340d6",
+      "03_existing_task_survives_admission_denial.json": "978e7bd9bc6e55e8eebe3c4128478ded0ac28fe7b3703fa2ba83b1496d7a75ed",
+      "09_one_broken_task_must_not_mask_another_regression.json": "17d812b29f4b348074b3f1506890e456be4953ac09ee4cf13df0cbcfc6240a4d"
+    },
+    "scope": "Offline abstract finite models only; no ROS/DDS/security/robot execution.",
+    "limits": [
+      "Random finite checks are not a general soundness proof or a research superiority result.",
+      "This oracle checks evaluate_world definite verdicts against all selected finite completions.",
+      "The two regression fixtures check persistent and per-task obligations, not every audit interface.",
+      "No claim that UNKNOWN is always maximally precise; conservative UNKNOWN is permitted.",
+      "Declared shared-binding evidence is not authenticated by this check."
+    ],
+    "reproduce": "python -B -X utf8 validation/independent_check.py --prototype prototype --output validation/independent_result.json"
+  },
+  "source_sha256": {
+    "coaudit/__init__.py": "f8a7481b54e64b13d8b16b7f3464144f4b4fca997e640044cd0fb9de35c137bb",
+    "coaudit/__main__.py": "28ff671a8d595510aae789e1fb4587f828c859d67d51557a0bc4ca9d29c134ba",
+    "coaudit/pipeline.py": "c71e465eb6c10831d7a6d3cd4db9bbc04a03eeff115da3863a6e4ae202a8b295",
+    "coaudit/policy.py": "9705fef143848a58ae9dfcf5dc82c352b2e142ae6a11b83c536c5bff2baa18b1",
+    "coaudit/report.py": "bc61affc11e7ad43c6e87c7a2366f626b3e62591d30d019671edf5ef17530a21",
+    "coaudit/trace.py": "22447cffe7198bfe1e63fc8e04299cbb60fd91672aa5fb4baf137e9ecb7b9bb9",
+    "examples/01_healthy/after.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/01_healthy/after.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/01_healthy/before.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/01_healthy/before.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/01_healthy/bundle.json": "77e45439ac778ed12f5c47760d0473a0ce5a0d26321b33398a4e5dee96c6a925",
+    "examples/01_healthy/contract.json": "03dcff0d1e46db974e8ab1ac668df661b85560e760b50817cb226497222d7dfd",
+    "examples/01_healthy/trace.json": "c99551e867e246398b2a46ccb56d15893f28d0fff5503f0a7defe81c26575c9e",
+    "examples/02_cancel_removed/after.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/02_cancel_removed/after.policy.xml": "5243be6fc6f85a201b1eb7bebb5fa0e787a91cc927a8277599d84a2b22797727",
+    "examples/02_cancel_removed/before.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/02_cancel_removed/before.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/02_cancel_removed/bundle.json": "18e2a0af3cd717820c892c62bd562758a9a9c31f1135a75ccf8e4fb9689fc367",
+    "examples/02_cancel_removed/contract.json": "03dcff0d1e46db974e8ab1ac668df661b85560e760b50817cb226497222d7dfd",
+    "examples/02_cancel_removed/trace.json": "7a08a48f1df6c4ffad238eee6de1bcafd4e86c5535459929cdc9b8cb7f918048",
+    "examples/03_forbidden_grant/after.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/03_forbidden_grant/after.policy.xml": "cd60fe9ae2f35ee8a4e74bd918ce2b4c9fb08a29aa1e990c6699201c678ca266",
+    "examples/03_forbidden_grant/before.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/03_forbidden_grant/before.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/03_forbidden_grant/bundle.json": "c83b80d26181697d166b9009d877ddc4e474b894d7678c23eb83925fd5b546fe",
+    "examples/03_forbidden_grant/contract.json": "03dcff0d1e46db974e8ab1ac668df661b85560e760b50817cb226497222d7dfd",
+    "examples/03_forbidden_grant/trace.json": "ad15a6214654627f1d8eb86d15852f0ff1175ab7ef58fe5d6299d1fce9964527",
+    "examples/04_security_disabled/after.json": "42473e73abfb0701b626cd6bbf4fa9ce73f62dfeeb7b26d66bee01590db04195",
+    "examples/04_security_disabled/after.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/04_security_disabled/before.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/04_security_disabled/before.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/04_security_disabled/bundle.json": "42f95a4a877b495d0b4fe331b716fcc0bd4f55a30fe33b41faef9f31a46bb269",
+    "examples/04_security_disabled/contract.json": "03dcff0d1e46db974e8ab1ac668df661b85560e760b50817cb226497222d7dfd",
+    "examples/04_security_disabled/trace.json": "09a92a8a4851506c12856509e45ff91cd62f4b63f5c636af125545cffc8d9f2e",
+    "examples/05_approved_fallback/after.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/05_approved_fallback/after.policy.xml": "1364995c92d6014cc590c04611d851469e36719ef8a50c6da8d35884d3bb44a9",
+    "examples/05_approved_fallback/before.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/05_approved_fallback/before.policy.xml": "9d426b0aa67be788290a0b557f4cd7ef4729eb0c86bc177455c8cd0040c6928c",
+    "examples/05_approved_fallback/bundle.json": "0760ae033bf2da04f4092ef2093263fdc67da8cc266e9e43bd9d6b349ac2b53b",
+    "examples/05_approved_fallback/contract.json": "f2cc1d6c4630fe0753eb6a24d7e3bed57577a245fb8bbed7557fab7bbbcccf49",
+    "examples/05_approved_fallback/trace.json": "302cc3a18b4329965b181a86ac34ebb1ec790548b12a47303b007e451d38cbe9",
+    "examples/06_unsupported_policy/after.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/06_unsupported_policy/after.policy.xml": "c3f3471a44a8368d0de9d2eb3fe15b4fed198a29d5b950b311685a25a77959fd",
+    "examples/06_unsupported_policy/before.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/06_unsupported_policy/before.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/06_unsupported_policy/bundle.json": "3539872b3a3adda0f9a47c5c9daf8576ae7e04c48ee1a6254192a943e090a2ad",
+    "examples/06_unsupported_policy/contract.json": "03dcff0d1e46db974e8ab1ac668df661b85560e760b50817cb226497222d7dfd",
+    "examples/06_unsupported_policy/trace.json": "ad82a895979a512e034288a02b523aee5e3e30a711a144666222a117e0d32a27",
+    "examples/07_missing_terminal/after.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/07_missing_terminal/after.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/07_missing_terminal/before.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/07_missing_terminal/before.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/07_missing_terminal/bundle.json": "dba2a84dac38b36ad6969db3f5a3e681c2a19ded325962328806e2ba63c5f2a9",
+    "examples/07_missing_terminal/contract.json": "03dcff0d1e46db974e8ab1ac668df661b85560e760b50817cb226497222d7dfd",
+    "examples/07_missing_terminal/trace.json": "434b9892d7108759abd4688a43583dfe23bafd70878dd8ba170780e43c824ac0",
+    "examples/08_truncated_trace/after.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/08_truncated_trace/after.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/08_truncated_trace/before.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/08_truncated_trace/before.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/08_truncated_trace/bundle.json": "6a6de74719b0f809523b6270946bc5d9314cdded81e4ee630840aff223905489",
+    "examples/08_truncated_trace/contract.json": "03dcff0d1e46db974e8ab1ac668df661b85560e760b50817cb226497222d7dfd",
+    "examples/08_truncated_trace/trace.json": "00b54b453710bead8251cad1c5026920335e65ecee18a7c8b0dfe175593bd2e2",
+    "examples/09_late_terminal/after.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/09_late_terminal/after.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/09_late_terminal/before.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/09_late_terminal/before.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/09_late_terminal/bundle.json": "4e757d72953ef649ba9e8da28fd8110e0f74e000469202369d3497a3b8802ec9",
+    "examples/09_late_terminal/contract.json": "03dcff0d1e46db974e8ab1ac668df661b85560e760b50817cb226497222d7dfd",
+    "examples/09_late_terminal/trace.json": "cf400539e1a8accd521d13a086c887e0c7c7771975e3e4ac08814f7af6126c3f",
+    "examples/10_context_changed/after.json": "df0ddc7f266edbab758578cce864a6eb2d70fe0f9cab31c3efa23e40bdcd3788",
+    "examples/10_context_changed/after.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/10_context_changed/before.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/10_context_changed/before.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/10_context_changed/bundle.json": "ea065d2e18e019d50aa671b25db5554750b3da5780a102e82c16ea118c4716c0",
+    "examples/10_context_changed/contract.json": "03dcff0d1e46db974e8ab1ac668df661b85560e760b50817cb226497222d7dfd",
+    "examples/10_context_changed/trace.json": "3a0760492c8a49af0c07546f1cdafbacf04a65303c0fdc987dad37ed27e0a51e",
+    "examples/11_unknown_fallback/after.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/11_unknown_fallback/after.policy.xml": "1364995c92d6014cc590c04611d851469e36719ef8a50c6da8d35884d3bb44a9",
+    "examples/11_unknown_fallback/before.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/11_unknown_fallback/before.policy.xml": "9d426b0aa67be788290a0b557f4cd7ef4729eb0c86bc177455c8cd0040c6928c",
+    "examples/11_unknown_fallback/bundle.json": "fe7b17945da9231775e957337fece08e58203beda9b8a52a65b5713e890fb855",
+    "examples/11_unknown_fallback/contract.json": "f62c9433fe64c3f220aa02bc687a9cb14007841a1c5a94362f6ab6e1652651ae",
+    "examples/11_unknown_fallback/trace.json": "302cc3a18b4329965b181a86ac34ebb1ec790548b12a47303b007e451d38cbe9",
+    "examples/12_wrong_goal_terminal/after.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/12_wrong_goal_terminal/after.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/12_wrong_goal_terminal/before.json": "f951df584fede9c8cac221b23f2db6e62555b7f6aca44607906457eb15c48a94",
+    "examples/12_wrong_goal_terminal/before.policy.xml": "4ea02277e1d082899f3c801558cf72302823bddbf453b801c2ccd090dfced045",
+    "examples/12_wrong_goal_terminal/bundle.json": "0f4950b0cb089cb56b6178f12c6195956bff39290c81a413478afe17c49fb841",
+    "examples/12_wrong_goal_terminal/contract.json": "03dcff0d1e46db974e8ab1ac668df661b85560e760b50817cb226497222d7dfd",
+    "examples/12_wrong_goal_terminal/trace.json": "14054284b23fcb7161ec1b11de2a58f1b8c439386bebf4efca1cb5b4aaac9985",
+    "experiments/make_examples.py": "ef57aae210031c6d8655a9b5a4a9129c55f655a74dfae085ea14380a3952c856",
+    "experiments/run_validation.py": "a15a0ffe468bf6eeb138f5e7218c49d15e81e61202d90eb101887302b991ad3f",
+    "prototype/__init__.py": "7652f7e9445ccdafe35750ffb1791c695f7bee37bdfcfcf2937269012bfb17a3",
+    "prototype/audit.py": "d01aca037db4d2eea8be27f993a5c5e5f6d95a279c5333dcf5fd877d792f4618",
+    "prototype/make_fixtures.py": "e7b8a9a773051fb79f6eb765eb6201a4771710d5f2258d4b66e081d4fc45fe7b",
+    "prototype/tests/test_audit.py": "9fbbf34425fb574cf1fce31ea47a819c2e9a40a34b27edbe9bd0c12c20cdb3b2",
+    "run_demo.py": "5ebf41c292c8debbe2ed2c9353c4264cdc4372b6987b1aed0b6dec34455abbaa",
+    "tests/test_pipeline.py": "b1c1b672d6813d75d938916ab1103cacc40f8bec13f3e73ed9921ee00e4da8b6",
+    "tests/test_policy.py": "90de47a76b020030181ebf8592c985a1b28e15f71de03c1b72c243204065877c",
+    "tests/test_trace.py": "67a8d280438a0f1bed53c72b7ae57cb502097a7309c11f7849752d88b3eb3f87",
+    "validation/independent_check.py": "ac33d8e833ae0eba4be4b919c9b3ea80ff4bc196d61b344b13380261f6c340d6"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "name": "04_legitimate_alternative_path",
+  "scope": "Synthetic finite model; DONE means communication prerequisites only.",
+  "before": {
+    "worlds": [
+      {
+        "id": "before",
+        "assignment": {},
+        "capability_domain": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack",
+          "stop_req",
+          "stop_ack"
+        ],
+        "allowed": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "complete": true,
+        "admit_new_goal": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "cancel",
+        "from": "ACTIVE",
+        "to": "CANCEL_ACK",
+        "requires": [
+          "cancel_req",
+          "cancel_reply"
+        ],
+        "when": {}
+      },
+      {
+        "id": "fallback",
+        "from": "CANCEL_ACK",
+        "to": "DONE",
+        "requires": [
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "when": {}
+      }
+    ]
+  },
+  "after": {
+    "worlds": [
+      {
+        "id": "after",
+        "assignment": {
+          "independent_stop_ready": true
+        },
+        "capability_domain": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack",
+          "stop_req",
+          "stop_ack"
+        ],
+        "allowed": [
+          "stop_req",
+          "stop_ack"
+        ],
+        "complete": true,
+        "admit_new_goal": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "independent_stop",
+        "from": "ACTIVE",
+        "to": "DONE",
+        "requires": [
+          "stop_req",
+          "stop_ack"
+        ],
+        "when": {
+          "independent_stop_ready": true
+        }
+      }
+    ]
+  },
+  "obligations": [
+    {
+      "id": "existing-goal-1",
+      "start": "ACTIVE",
+      "targets": [
+        "DONE"
+      ],
+      "admitted_before": true
+    }
+  ],
+  "shared_bindings": [],
+  "expected_verdicts": {
+    "correlated": [
+      "PASS",
+      "PASS",
+      "PASS"
+    ],
+    "independent_baseline": [
+      "PASS",
+      "PASS",
+      "PASS"
+    ]
+  }
+}

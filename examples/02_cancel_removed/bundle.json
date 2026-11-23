@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "name": "权限收紧删除旧任务取消能力",
+  "before": {
+    "deployment": "before.json",
+    "policy": "before.policy.xml"
+  },
+  "after": {
+    "deployment": "after.json",
+    "policy": "after.policy.xml"
+  },
+  "contract": "contract.json",
+  "trace": "trace.json"
+}

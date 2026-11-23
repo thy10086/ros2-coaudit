@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "name": "01_shared_binding_correlation",
+  "scope": "Synthetic finite model; DONE means communication prerequisites only.",
+  "before": {
+    "worlds": [
+      {
+        "id": "before-A",
+        "assignment": {
+          "namespace": "A"
+        },
+        "capability_domain": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "allowed": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "complete": true,
+        "admit_new_goal": true
+      },
+      {
+        "id": "before-B",
+        "assignment": {
+          "namespace": "B"
+        },
+        "capability_domain": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "allowed": [],
+        "complete": true,
+        "admit_new_goal": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "cancel",
+        "from": "ACTIVE",
+        "to": "CANCEL_ACK",
+        "requires": [
+          "cancel_req",
+          "cancel_reply"
+        ],
+        "when": {}
+      },
+      {
+        "id": "fallback",
+        "from": "CANCEL_ACK",
+        "to": "DONE",
+        "requires": [
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "when": {}
+      }
+    ]
+  },
+  "after": {
+    "worlds": [
+      {
+        "id": "after-A",
+        "assignment": {
+          "namespace": "A"
+        },
+        "capability_domain": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "allowed": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "complete": true,
+        "admit_new_goal": true
+      },
+      {
+        "id": "after-B",
+        "assignment": {
+          "namespace": "B"
+        },
+        "capability_domain": [
+          "cancel_req",
+          "cancel_reply",
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "allowed": [],
+        "complete": true,
+        "admit_new_goal": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "cancel",
+        "from": "ACTIVE",
+        "to": "CANCEL_ACK",
+        "requires": [
+          "cancel_req",
+          "cancel_reply"
+        ],
+        "when": {}
+      },
+      {
+        "id": "fallback",
+        "from": "CANCEL_ACK",
+        "to": "DONE",
+        "requires": [
+          "fallback_req",
+          "fallback_ack"
+        ],
+        "when": {}
+      }
+    ]
+  },
+  "obligations": [
+    {
+      "id": "existing-goal-1",
+      "start": "ACTIVE",
+      "targets": [
+        "DONE"
+      ],
+      "admitted_before": true
+    }
+  ],
+  "shared_bindings": [
+    {
+      "variable": "namespace",
+      "relation": "declared_unchanged",
+      "basis_ref": "synthetic assumption E1; no external artifact validated",
+      "before_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "after_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "before_context": "deployment-X",
+      "after_context": "deployment-X"
+    }
+  ],
+  "expected_verdicts": {
+    "correlated": [
+      "UNKNOWN",
+      "UNKNOWN",
+      "PASS"
+    ],
+    "independent_baseline": [
+      "UNKNOWN",
+      "UNKNOWN",
+      "UNKNOWN"
+    ]
+  }
+}

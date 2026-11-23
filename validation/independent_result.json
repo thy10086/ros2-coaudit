@@ -1,0 +1,56 @@
+{
+  "result": "PASS",
+  "timestamp_utc": "2026-11-17T00:39:34.868182+00:00",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "random_seed": 20261112,
+  "independent_random_graph_cases": 1000,
+  "definite_verdicts_checked_against_all_completions": 835,
+  "unknown_verdicts": 165,
+  "fully_completed_oracle_cases": 3540,
+  "errors": 0,
+  "counterexamples": [],
+  "regressions": {
+    "persistent_obligation_after_new_admission_denial": {
+      "expected": [
+        "PASS",
+        "FAIL",
+        "FAIL"
+      ],
+      "actual": [
+        "PASS",
+        "FAIL",
+        "FAIL"
+      ],
+      "passed": true
+    },
+    "preexisting_failure_does_not_mask_another_regression": {
+      "expected": [
+        "FAIL",
+        "FAIL",
+        "FAIL"
+      ],
+      "actual": [
+        "FAIL",
+        "FAIL",
+        "FAIL"
+      ],
+      "passed": true
+    }
+  },
+  "generated_cases_sha256": "eb91c48380de9766bab515b7eba43615b36089bedc98020fe4d1d9641742e913",
+  "files_sha256": {
+    "audit.py": "d01aca037db4d2eea8be27f993a5c5e5f6d95a279c5333dcf5fd877d792f4618",
+    "independent_check.py": "ac33d8e833ae0eba4be4b919c9b3ea80ff4bc196d61b344b13380261f6c340d6",
+    "03_existing_task_survives_admission_denial.json": "978e7bd9bc6e55e8eebe3c4128478ded0ac28fe7b3703fa2ba83b1496d7a75ed",
+    "09_one_broken_task_must_not_mask_another_regression.json": "17d812b29f4b348074b3f1506890e456be4953ac09ee4cf13df0cbcfc6240a4d"
+  },
+  "scope": "Offline abstract finite models only; no ROS/DDS/security/robot execution.",
+  "limits": [
+    "Random finite checks are not a general soundness proof or a research superiority result.",
+    "This oracle checks evaluate_world definite verdicts against all selected finite completions.",
+    "The two regression fixtures check persistent and per-task obligations, not every audit interface.",
+    "No claim that UNKNOWN is always maximally precise; conservative UNKNOWN is permitted.",
+    "Declared shared-binding evidence is not authenticated by this check."
+  ],
+  "reproduce": "python -B -X utf8 validation/independent_check.py --prototype prototype --output validation/independent_result.json"
+}

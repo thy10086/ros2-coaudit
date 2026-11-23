@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policy version="0.2.0"><enclaves>
+  <enclave path="/operator"><profiles><profile ns="/" node="mission_client"><actions call="ALLOW"><action>/navigate</action></actions><services request="ALLOW"><service>/emergency_stop</service></services></profile></profiles></enclave>
+  <enclave path="/robot"><profiles><profile ns="/" node="navigation_server"><actions execute="ALLOW"><action>/navigate</action></actions><services reply="ALLOW"><service>/emergency_stop</service></services></profile></profiles></enclave>
+</enclaves></policy>
